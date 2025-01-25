@@ -19,6 +19,23 @@ body {
 
 
 /* -----------------------------------------*\
+* TYPOGRAPHY
+\* ------------------------------------------*/
+
+.headline-1 {
+    @apply max-w-max;
+    background: -webkit-linear-gradient(0deg, #fafafa 0%, #a1a1aa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.headline-1 {
+    @apply text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
+}
+
+
+
+/* -----------------------------------------*\
 * UTILITIES
 \* ------------------------------------------*/
 
@@ -27,6 +44,17 @@ body {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
+.container {
+    @apply px-4 mx-auto lg:px-8 xl:max-w-6xl;
+}
+
+.img-box {
+    @apply bg-zinc-700 overflow-hidden;
+}
+
+.img-cover {
+    @apply w-full h-full object-cover;
+}
 
 /* -----------------------------------------*\
 * COMPONENTS
