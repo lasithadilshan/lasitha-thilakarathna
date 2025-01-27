@@ -26,13 +26,22 @@ const About = () => {
         </p>
         <div className="">
           {
-            aboutItems.map((item, index) => (
-              <div key={index}>
-                <h3>{item.label}</h3>
-                <p>{item.number}</p>
+            aboutItems.map(({ label, number}, key) => (
+              <div key={key}>
+                <span className="">{number}</span>
+                <span className="">+</span>
+
+                <p className="">{label}</p>
               </div>
             ))
           }
+          <img 
+          src="/images/logo.svg" 
+          alt="Logo"
+          width={30}
+          height={30}
+          className="section"
+          />
         </div>
       </div>
     </section>
