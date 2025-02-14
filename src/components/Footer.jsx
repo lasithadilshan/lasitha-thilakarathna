@@ -5,7 +5,7 @@
 
 /**
  * Components
- */
+*/
 import { ButtonPrimary } from "./Button";
 
 const sitemap = [
@@ -68,7 +68,7 @@ const Footer = () => {
                     <ButtonPrimary
                         href="mailto:dilshantilakaratne29@gmail.com"
                         label="Start project"
-                        icon="chevron-right"
+                        icon="chevron_right"
                     />
 
                 </div>
@@ -118,10 +118,10 @@ const Footer = () => {
                         className=""
                         >
                             <img 
-                            src="/images/logo.svg"
-                            width={40}
-                            height={40}
-                            alt="Logo"
+                              src="/images/logo.svg"
+                              width={40}
+                              height={40}
+                              alt="Logo"
                             />
                         </a>
                         <p className="text-zinc-500 text-sm">
