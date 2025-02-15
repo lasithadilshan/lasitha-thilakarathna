@@ -4,6 +4,18 @@
  */
 
 /**
+ * Node modules
+ */
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
+
+/**
+ * Register gsap plugins
+ */
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+/**
  * Components
  */
 import ReviewCard from './ReviewCard';
@@ -56,7 +68,7 @@ const Review = () => {
           <h2 className="headline-2 mb-8">
             What our customers say
           </h2>
-          <div className="flex items-stretch gap-3 w-fit">
+          <div className="flex items-stretch gap-3 w-fit reveal-up">
             {reviews.map(({ content, name, imgSrc, company }, 
             key) => (
               <ReviewCard
