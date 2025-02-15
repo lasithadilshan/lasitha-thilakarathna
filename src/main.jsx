@@ -13,7 +13,7 @@ import { createRoot } from 'react-dom/client'
  * Components
  */
 import App from './App.jsx';
-
+import 'lenis/dist/lenis.css'
 
 /**
  * CSS link
