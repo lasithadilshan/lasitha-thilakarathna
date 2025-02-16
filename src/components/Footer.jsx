@@ -64,13 +64,13 @@ const Footer = () => {
                     <h2 className="headline-1 mb-8 lg:max-w-[12ch] reveal-up">
                         Let&apos;s work together today!
                     </h2>
-
-                    <ButtonPrimary
-                        href="mailto:dilshantilakaratne29@gmail.com"
-                        label="Start project"
-                        icon="chevron_right"
-                        classes="reveal-up"
-                    />
+                    <a href="mailto:dilshantilakaratne29@gmail.com">
+                      <ButtonPrimary
+                          label="Start project"
+                          icon="chevron_right"
+                          classes="reveal-up"
+                      />
+                    </a>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 lg:pl-20">
