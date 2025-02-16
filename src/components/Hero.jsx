@@ -7,7 +7,7 @@
  * Components
  */
 import { ButtonPrimary, ButtonOutline } from "./Button";
-import CV from "/public/pdf/CV.pdf";
+import CV from "/src/asset/pdf/CV.pdf";
 
 const Hero = () => {
   return (
