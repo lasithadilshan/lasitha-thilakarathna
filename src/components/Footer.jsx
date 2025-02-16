@@ -34,23 +34,23 @@ const sitemap = [
   const socials = [
     {
       label: 'GitHub',
-      href: 'https://www.github.com/codewithsadee-org'
+      href: 'https://www.github.com/lasithadilshan'
     },
     {
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/codewithsadee'
+      href: 'https://www.linkedin.com/in/lasitha-thilakarathna-3027ab120/'
     },
     {
       label: 'Twitter X',
-      href: 'https://x.com/codewithsadee_'
+      href: 'https://x.com/dilshantilakar1'
     },
     {
       label: 'Instagram',
-      href: 'https://www.instagram.com/codewithsadee'
+      href: 'https://www.instagram.com/lasitha_dilshan_/'
     },
     {
-      label: 'CodePen',
-      href: 'https://codepen.io/codewithsadee'
+      label: 'Facebook',
+      href: 'https://web.facebook.com/lasithadilshantilakaratne/'
     }
   ];
 
