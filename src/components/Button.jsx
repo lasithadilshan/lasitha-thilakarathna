@@ -9,12 +9,12 @@
 import PropTypes from "prop-types";
 
 /**
- * Primary Buttons
+ * Primary Button
  */
 
 const ButtonPrimary = ({
     href,
-    target = 'self',
+    target = '_self',
     label,
     icon,
     classes
@@ -64,12 +64,12 @@ ButtonPrimary.propTypes = {
 }
 
 /**
- * Outline Buttons
+ * Outline Button
  */
 
 const ButtonOutline = ({
     href,
-    target = 'self',
+    target = '_self',
     label,
     icon,
     classes
