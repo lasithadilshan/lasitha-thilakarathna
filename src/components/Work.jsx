@@ -35,13 +35,13 @@ const works = [
   },
   {
     imgSrc: `${import.meta.env.BASE_URL}images/project-5.png`,
-    title: 'eCommerce website',
+    title: 'Ecommerce Website',
     tags: ['eCommerce', 'Development'],
     projectLink: 'https://github.com/lasithadilshan/foodgarage'
   },
   {
     imgSrc: `${import.meta.env.BASE_URL}images/project-6.png`,
-    title: 'Personal portfolio',
+    title: 'Personal Portfolio',
     tags: ['Web-design', 'Development'],
     projectLink: 'https://github.com/lasithadilshan/lasitha-thilakarathna'
   },
