@@ -41,9 +41,9 @@ const works = [
   },
   {
     imgSrc: '/images/project-6.png',
-    title: 'vCard Personal portfolio',
+    title: 'Personal portfolio',
     tags: ['Web-design', 'Development'],
-    projectLink: 'https://github.com/codewithsadee/vcard-personal-portfolio'
+    projectLink: 'https://github.com/lasithadilshan/lasitha-thilakarathna'
   },
 ];
 
