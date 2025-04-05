@@ -30,7 +30,7 @@ const Header = () => {
         <h1>
           <a href="/" className="logo">
             <img
-              src="/images/logo.svg"
+              src={`${import.meta.env.BASE_URL}images/logo.svg`}
               width={40}
               height={40}
               alt="Lasitha Thilakarathna"
@@ -44,7 +44,7 @@ const Header = () => {
               {navOpen ? 'close' : 'menu'}
             </span>
           </button>
-          <Navbar navOpen={navOpen}/>
+          <Navbar navOpen={navOpen} />
         </div>
 
         <a href="#contact" className="btn btn-secondary max-md:hidden md:justify-self-end">

@@ -10,42 +10,42 @@ import SkillCard from './SkillCard';
 
 const skillItem = [
     {
-      imgSrc: '/images/figma.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/figma.svg`,
       label: 'Figma',
       desc: 'Design tool'
     },
     {
-      imgSrc: '/images/css3.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/css3.svg`,
       label: 'CSS',
       desc: 'User Interface'
     },
     {
-      imgSrc: '/images/javascript.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/javascript.svg`,
       label: 'JavaScript',
       desc: 'Interaction'
     },
     {
-      imgSrc: '/images/nodejs.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/nodejs.svg`,
       label: 'NodeJS',
       desc: 'Web Server'
     },
     {
-      imgSrc: '/images/expressjs.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/expressjs.svg`,
       label: 'ExpressJS',
       desc: 'Node Framework'
     },
     {
-      imgSrc: '/images/mongodb.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/mongodb.svg`,
       label: 'MongoDB',
       desc: 'Database'
     },
     {
-      imgSrc: '/images/react.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/react.svg`,
       label: 'React',
       desc: 'Framework'
     },
     {
-      imgSrc: '/images/tailwindcss.svg',
+      imgSrc: `${import.meta.env.BASE_URL}images/tailwindcss.svg`,
       label: 'TailwindCSS',
       desc: 'User Interface'
     },

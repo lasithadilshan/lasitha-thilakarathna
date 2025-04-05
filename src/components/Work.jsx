@@ -10,37 +10,37 @@ import ProjectCard from './ProjectCard';
 
 const works = [
   {
-    imgSrc: '/images/project-1.png',
+    imgSrc: `${import.meta.env.BASE_URL}images/project-1.png`,
     title: 'Machine Learning App',
     tags: ['ML', 'MVC', 'Development'],
     projectLink: 'https://ld-machinelearning.streamlit.app/'
   },
   {
-    imgSrc: '/images/project-2.png',
+    imgSrc: `${import.meta.env.BASE_URL}images/project-2.png`,
     title: 'Gen AI App',
     tags: ['Generative AI', 'OpenAi', 'Development', 'gpt-4'],
     projectLink: 'https://github.com/lasithadilshan/MscResearchProject'
   },
   {
-    imgSrc: '/images/project-3.png',
+    imgSrc: `${import.meta.env.BASE_URL}images/project-3.png`,
     title: 'CRUD',
     tags: ['Development', 'Angular', 'CRUD'],
     projectLink: 'https://github.com/lasithadilshan/Angular11CRUD'
   },
   {
-    imgSrc: '/images/project-4.png',
+    imgSrc: `${import.meta.env.BASE_URL}images/project-4.png`,
     title: 'Music Player Android App',
     tags: ['Mobile-design', 'Development'],
     projectLink: 'https://github.com/lasithadilshan/DMusic'
   },
   {
-    imgSrc: '/images/project-5.png',
+    imgSrc: `${import.meta.env.BASE_URL}images/project-5.png`,
     title: 'eCommerce website',
     tags: ['eCommerce', 'Development'],
     projectLink: 'https://github.com/lasithadilshan/foodgarage'
   },
   {
-    imgSrc: '/images/project-6.png',
+    imgSrc: `${import.meta.env.BASE_URL}images/project-6.png`,
     title: 'Personal portfolio',
     tags: ['Web-design', 'Development'],
     projectLink: 'https://github.com/lasithadilshan/lasitha-thilakarathna'
