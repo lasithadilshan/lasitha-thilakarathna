@@ -38,7 +38,7 @@ const socials = [
   },
   {
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/lasitha-thilakarathna-3027ab120/'
+    href: 'https://www.linkedin.com/in/lasitha-t-3027ab120/'
   },
   {
     label: 'Twitter X',
