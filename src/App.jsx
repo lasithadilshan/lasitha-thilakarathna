@@ -3,22 +3,11 @@
  * @license Apache-2.0
  */
 
-/**
- * Node modules
- */
 import { ReactLenis } from 'lenis/react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
 
-/**
- * Register gsap plugins
- */
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-/**
- * Components
- */
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -28,16 +17,26 @@ import Review from "./components/Review";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-const App = () => {
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-    useGSAP(() =>{
+const App = () => {
+    useGSAP(() => {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const elements = gsap.utils.toArray('.reveal-up');
+
+        if (prefersReducedMotion) {
+            elements.forEach((element) => {
+                gsap.set(element, { y: 0, opacity: 1 });
+            });
+            return;
+        }
+
         elements.forEach((element) => {
             gsap.to(element, {
                 scrollTrigger: {
                     trigger: element,
-                    start: '-200 bottom',
-                    end: 'bottom 80%',
+                    start: '-150 bottom',
+                    end: 'bottom 85%',
                     scrub: true
                 },
                 y: 0,
@@ -49,9 +48,9 @@ const App = () => {
     });
 
     return (
-        <ReactLenis root>
+        <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
             <Header />
-            <main>
+            <main id="main-content">
                 <Hero />
                 <About />
                 <Skill />
@@ -61,8 +60,7 @@ const App = () => {
             </main>
             <Footer />
         </ReactLenis>
-    )
-
-}
+    );
+};
 
 export default App;

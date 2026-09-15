@@ -3,9 +3,6 @@
  * @license Apache-2.0
  */
 
-/**
- * Components
-*/
 import { ButtonPrimary } from "./Button";
 
 const sitemap = [
@@ -55,8 +52,10 @@ const socials = [
 ];
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="section">
+    <footer className="section border-t border-zinc-800/40">
       <div className="container">
 
         <div className="lg:grid lg:grid-cols-2">
@@ -64,26 +63,25 @@ const Footer = () => {
             <h2 className="headline-1 mb-8 lg:max-w-[12ch] reveal-up">
               Let&apos;s work together today!
             </h2>
-            <a href="mailto:dilshantilakaratne29@gmail.com">
-              <ButtonPrimary
-                label="Start project"
-                icon="chevron_right"
-                classes="reveal-up"
-              />
-            </a>
+            <ButtonPrimary
+              href="mailto:dilshantilakaratne29@gmail.com"
+              label="Start project"
+              icon="chevron_right"
+              classes="reveal-up"
+            />
           </div>
 
           <div className="grid grid-cols-2 gap-4 lg:pl-20">
 
             <div>
-              <p className="mb-2 reveal-up">Sitemap</p>
+              <p className="mb-3 font-medium text-zinc-200 reveal-up">Sitemap</p>
 
-              <ul>
+              <ul className="space-y-1">
                 {sitemap.map(({ label, href }, key) => (
                   <li key={key}>
                     <a
                       href={href}
-                      className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 reveal-up"
+                      className="block text-sm text-zinc-400 py-1 transition-colors hover:text-amber-400 reveal-up"
                     >
                       {label}
                     </a>
@@ -94,15 +92,16 @@ const Footer = () => {
             </div>
 
             <div>
-              <p className="mb-2 reveal-up">Socials</p>
+              <p className="mb-3 font-medium text-zinc-200 reveal-up">Socials</p>
 
-              <ul>
+              <ul className="space-y-1">
                 {socials.map(({ label, href }, key) => (
                   <li key={key}>
                     <a
                       href={href}
                       target="_blank"
-                      className="block text-sm text-zinc-400 py-1 transition-colors hover:text-zinc-200 reveal-up"
+                      rel="noopener noreferrer"
+                      className="block text-sm text-zinc-400 py-1 transition-colors hover:text-amber-400 reveal-up"
                     >
                       {label}
                     </a>
@@ -112,10 +111,11 @@ const Footer = () => {
 
             </div>
 
-            <div className="flex items-center justify-between pt-10 mb-8">
+            <div className="col-span-2 flex items-center justify-between pt-10 pb-8 border-t border-zinc-800/40 mt-6">
               <a
-                href="/"
-                className="logo reveal-up"
+                href="#home"
+                className="logo reveal-up focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded-lg"
+                aria-label="Lasitha Thilakarathna - Return to top"
               >
                 <img
                   src={`${import.meta.env.BASE_URL}images/logo.svg`}
@@ -125,7 +125,7 @@ const Footer = () => {
                 />
               </a>
               <p className="text-zinc-500 text-sm reveal-up">
-                &copy; 2025 <span className="text-zinc-200">lasithadilshan</span>
+                &copy; {currentYear} <span className="text-zinc-300 font-medium">lasithadilshan</span>. All rights reserved.
               </p>
             </div>
 
@@ -135,7 +135,7 @@ const Footer = () => {
 
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

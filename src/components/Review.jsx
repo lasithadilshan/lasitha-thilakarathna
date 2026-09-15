@@ -3,22 +3,13 @@
  * @license Apache-2.0
  */
 
-/**
- * Node modules
- */
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from '@gsap/react';
-
-/**
- * Register gsap plugins
- */
-gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-/**
- * Components
- */
 import ReviewCard from './ReviewCard';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const reviews = [
   {
@@ -60,42 +51,54 @@ const reviews = [
 ];
 
 const Review = () => {
+  const containerRef = useRef(null);
+  const slideRef = useRef(null);
 
-  useGSAP(()=>{
-    gsap.to('.scrub-slide', {
+  useGSAP(() => {
+    if (!slideRef.current || !containerRef.current) return;
+    
+    gsap.to(slideRef.current, {
       scrollTrigger: {
-        trigger: '.scrub-slide',
-        start: '-200% 80%',
-        end: '400% 80%',
-        scrub: true
+        trigger: containerRef.current,
+        start: 'top 85%',
+        end: 'bottom 20%',
+        scrub: 1
       },
-      x: '-1000'
-    })
-  });
+      x: () => -(slideRef.current.scrollWidth - containerRef.current.offsetWidth + 60),
+      ease: 'none'
+    });
+  }, { scope: containerRef });
 
   return (
     <section 
       id="reviews"  
-      className="section overflow-hidden">
-        <div className="container">
-          <h2 className="headline-2 mb-8">
-            What our customers say
-          </h2>
-          <div className="scrub-slide flex items-stretch gap-3 w-fit reveal-up">
-            {reviews.map(({ content, name, imgSrc, company }, 
-            key) => (
-              <ReviewCard
-                key={key}
-                name={name}
-                imgSrc={imgSrc}
-                company={company}
-                content={content}
-              />
-            ))}
-          </div>
+      className="section overflow-hidden"
+      ref={containerRef}
+    >
+      <div className="container">
+        <h2 className="headline-2 mb-3 reveal-up">
+          What our customers say
+        </h2>
+        <p className="text-zinc-400 mb-8 max-w-[50ch] reveal-up">
+          Testimonials from collaborators, engineering teams, and clients I have worked with.
+        </p>
+        <div 
+          ref={slideRef}
+          className="scrub-slide flex items-stretch gap-4 w-fit reveal-up"
+        >
+          {reviews.map(({ content, name, imgSrc, company }, key) => (
+            <ReviewCard
+              key={key}
+              name={name}
+              imgSrc={imgSrc}
+              company={company}
+              content={content}
+            />
+          ))}
         </div>
-      </section>
-  )
-}
+      </div>
+    </section>
+  );
+};
 
-export default Review
+export default Review;

@@ -3,94 +3,116 @@
  * @license Apache-2.0
  */
 
-
-/**
- * Node modules
- */
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 
-const Navbar = ( { navOpen } ) => {
+const navItems = [
+  { label: 'Home', link: '#home' },
+  { label: 'About', link: '#about' },
+  { label: 'Work', link: '#work' },
+  { label: 'Reviews', link: '#reviews' },
+  { label: 'Contact', link: '#contact', mobileOnly: true }
+];
 
-    const lastActiveLink = useRef();
-    const activeBox = useRef();
+const Navbar = ({ navOpen, closeNav }) => {
+  const [activeSection, setActiveSection] = useState('#home');
+  const activeBox = useRef(null);
+  const linkRefs = useRef({});
 
-    const initActiveBox = () => {
-      activeBox.current.style.top = lastActiveLink.current.offsetTop + "px";
-      activeBox.current.style.left = lastActiveLink.current.offsetLeft + "px";
-      activeBox.current.style.width = lastActiveLink.current.offsetWidth + "px";
-      activeBox.current.style.height = lastActiveLink.current.offsetHeight + "px";
+  const updateActiveBox = useCallback((targetLink) => {
+    if (!targetLink || !activeBox.current) return;
+    activeBox.current.style.top = `${targetLink.offsetTop}px`;
+    activeBox.current.style.left = `${targetLink.offsetLeft}px`;
+    activeBox.current.style.width = `${targetLink.offsetWidth}px`;
+    activeBox.current.style.height = `${targetLink.offsetHeight}px`;
+  }, []);
+
+  // Update active pill position whenever active section or navOpen changes
+  useEffect(() => {
+    const currentLink = linkRefs.current[activeSection];
+    if (currentLink) {
+      updateActiveBox(currentLink);
     }
+  }, [activeSection, navOpen, updateActiveBox]);
 
-    useEffect(initActiveBox, []);
-    window.addEventListener('resize', initActiveBox);
+  // Handle window resize with proper cleanup
+  useEffect(() => {
+    const handleResize = () => {
+      const currentLink = linkRefs.current[activeSection];
+      if (currentLink) {
+        updateActiveBox(currentLink);
+      }
+    };
 
-    const activeCurrentLink = (event) => {
-      lastActiveLink.current?.classList.remove('active');
-      event.target.classList.add('active');
-      lastActiveLink.current = event.target;
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [activeSection, updateActiveBox]);
 
-      activeBox.current.style.top = event.target.offsetTop + "px";
-      activeBox.current.style.left = event.target.offsetLeft + "px";
-      activeBox.current.style.width = event.target.offsetWidth + "px";
-      activeBox.current.style.height = event.target.offsetHeight + "px";
+  // Scroll spy: observe sections in viewport
+  useEffect(() => {
+    const sections = navItems
+      .map(item => document.querySelector(item.link))
+      .filter(Boolean);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = `#${entry.target.id}`;
+            setActiveSection(id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-30% 0px -40% 0px',
+        threshold: 0.1
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const handleLinkClick = (e, link) => {
+    setActiveSection(link);
+    const targetLink = linkRefs.current[link];
+    if (targetLink) {
+      updateActiveBox(targetLink);
     }
-
-    const navItems = [
-        {
-          label: 'Home',
-          link: '#home',
-          className: 'nav-link active',
-          ref: lastActiveLink
-        },
-        {
-          label: 'About',
-          link: '#about',
-          className: 'nav-link'
-        },
-        {
-          label: 'Work',
-          link: '#work',
-          className: 'nav-link'
-        },
-        {
-          label: 'Reviews',
-          link: '#reviews',
-          className: 'nav-link'
-        },
-        {
-          label: 'Contact',
-          link: '#contact',
-          className: 'nav-link md:hidden'
-        }
-      ];
-
+    if (closeNav) {
+      closeNav();
+    }
+  };
 
   return (
-    <nav className={'navbar ' + (navOpen ? 'active' : '')}>
-        {
-            navItems.map(({ label, link, className, ref }, key) => (
-                <a
-                 href={link}
-                 key={key}
-                 ref={ref}
-                 className={className}
-                 onClick={activeCurrentLink}
-                >
-                    {label}
-                </a>
-            ))
-        }
-        <div className="active-box" 
-        ref={activeBox}>
-
-        </div>
+    <nav className={`navbar ${navOpen ? 'active' : ''}`} aria-label="Main Navigation">
+      {navItems.map(({ label, link, mobileOnly }) => {
+        const isActive = activeSection === link;
+        return (
+          <a
+            href={link}
+            key={link}
+            ref={(el) => {
+              if (el) linkRefs.current[link] = el;
+            }}
+            className={`nav-link ${isActive ? 'active' : ''} ${mobileOnly ? 'md:hidden' : ''}`}
+            onClick={(e) => handleLinkClick(e, link)}
+          >
+            {label}
+          </a>
+        );
+      })}
+      <div className="active-box" ref={activeBox} aria-hidden="true" />
     </nav>
-  )
-}
+  );
+};
 
 Navbar.propTypes = {
   navOpen: PropTypes.bool.isRequired,
-}
+  closeNav: PropTypes.func
+};
 
-export default Navbar
+export default Navbar;

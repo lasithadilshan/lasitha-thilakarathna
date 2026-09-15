@@ -2,11 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 /* -----------------------------------------*\
-* BASE
+* BASE & DESIGN SYSTEM
 \* ------------------------------------------*/
 
 html {
@@ -14,9 +11,9 @@ html {
 }
 
 body {
-    @apply bg-zinc-900 text-zinc-50
+    @apply bg-zinc-950 text-zinc-100 selection:bg-amber-400 selection:text-zinc-950;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
-
 
 /* -----------------------------------------*\
 * TYPOGRAPHY
@@ -25,40 +22,38 @@ body {
 .headline-1,
 .headline-2 {
     @apply max-w-max;
-    background: -webkit-linear-gradient(0deg, #fafafa,
-    #a1a1aa);
+    background: linear-gradient(135deg, #ffffff 0%, #f4f4f5 50%, #a1a1aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .headline-1 {
-    @apply text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
+    @apply text-4xl sm:text-5xl leading-tight font-bold lg:text-[56px] lg:leading-[1.12] tracking-tight;
 }
 
 .headline-2 {
-    @apply text-3xl lg:text-4xl lg:leading-tight font-semibold
+    @apply text-3xl lg:text-4xl lg:leading-tight font-bold tracking-tight;
 }
 
-.title-1{
-    @apply text-[22px] font-normal
+.title-1 {
+    @apply text-xl lg:text-[22px] font-semibold tracking-tight;
 }
-
 
 /* -----------------------------------------*\
-* UTILITIES
+* UTILITIES & AMBIENT EFFECTS
 \* ------------------------------------------*/
 
 .material-symbols-rounded {
-    @apply w-[1em] h-[1em] overflow-hidden;
+    @apply w-[1em] h-[1em] overflow-hidden select-none inline-block;
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 .container {
-    @apply px-4 mx-auto lg:px-8 xl:max-w-6xl;
+    @apply px-4 mx-auto sm:px-6 lg:px-8 xl:max-w-6xl;
 }
 
 .img-box {
-    @apply bg-zinc-700 overflow-hidden;
+    @apply bg-zinc-800/80 overflow-hidden;
 }
 
 .img-cover {
@@ -66,11 +61,33 @@ body {
 }
 
 .section {
-    @apply pt-20 lg:pt-32
+    @apply pt-24 lg:pt-32 relative;
 }
 
 .reveal-up {
-    @apply translate-y-20 opacity-0
+    @apply translate-y-12 opacity-0;
+    will-change: transform, opacity;
+}
+
+/* Modern ambient lighting */
+.ambient-glow-amber {
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, rgba(251, 191, 36, 0) 70%);
+    filter: blur(50px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ambient-glow-sky {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, rgba(56, 189, 248, 0) 70%);
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* -----------------------------------------*\
@@ -78,84 +95,77 @@ body {
 \* ------------------------------------------*/
 
 /* Menu btn */
-
 .menu-btn {
-    @apply w-10 h-10 grid place-items-center bg-zinc-50/10
-    rounded-xl ring-inset ring-1 ring-zinc-50/[0.02]
-    backdrop-blur-2xl hover:bg-zinc-50/15 transition-[transform,background-color]
-    active:scale-95
+    @apply w-10 h-10 grid place-items-center bg-zinc-800/70
+    rounded-xl ring-1 ring-inset ring-zinc-700/50
+    backdrop-blur-xl hover:bg-zinc-800 transition-all
+    active:scale-95 text-zinc-200 hover:text-zinc-50
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400;
 }
 
 /* Navbar */
-
 .navbar {
-    @apply absolute top-full mt-2 right-0 min-w-40 p-2 
-    bg-zinc-50/10 rounded-2xl ring-inset ring-1 ring-zinc-50/5 
-    scale-90 isolate blur-sm opacity-0 invisible transition-[opacity,transform,filter] md:static md:flex 
+    @apply absolute top-full mt-2 right-0 min-w-44 p-2 
+    bg-zinc-900/95 rounded-2xl ring-1 ring-zinc-700/50 
+    scale-95 isolate blur-sm opacity-0 invisible transition-all duration-300 md:static md:flex 
     md:items-center md:mt-0 md:opacity-100 md:blur-0
-    md:visible md:scale-100 backdrop-blur-2xl
+    md:visible md:scale-100 backdrop-blur-2xl shadow-xl shadow-black/40;
 }
 
 .navbar.active {
-    @apply opacity-100 scale-100 blur-0 visible
+    @apply opacity-100 scale-100 blur-0 visible;
 }
 
 .nav-link {
     @apply grid items-center h-9 px-4 text-sm font-medium
-    tracking-wide text-zinc-50/50 hover:text-zinc-50
-    transition-colors
+    tracking-wide text-zinc-400 hover:text-zinc-100
+    transition-colors rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400;
 }
 
 .nav-link.active {
-    @apply text-zinc-900 duration-500
+    @apply text-zinc-950 font-semibold;
 }
 
 .navbar .active-box {
-    @apply absolute bg-zinc-50
-    rounded-lg -z-10 transition-[top,left] duration-500
+    @apply absolute bg-amber-400
+    rounded-lg -z-10 transition-[top,left,width,height] duration-300 ease-out shadow-sm;
 }
 
 /* Button */
-
 .btn {
-    @apply max-w-max h-9 flex items-center gap-2 px-4
-    rounded-xl font-medium text-sm ring-1 ring-zinc-50/5
-    ring-inset transition-[background-color]
+    @apply max-w-max h-11 flex items-center gap-2 px-5
+    rounded-xl font-medium text-sm transition-all duration-200
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950;
 }
 
 .btn-secondary {
-    @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80
+    @apply bg-zinc-100 text-zinc-950 hover:bg-white active:bg-zinc-200 shadow-md shadow-black/20;
 }
 
 .btn .material-symbols-rounded {
-    @apply text-[18px]
+    @apply text-[18px];
 }
 
-.btn:has( .material-symbols-rounded ) {
-    @apply pr-3
+.btn:has(.material-symbols-rounded) {
+    @apply pr-4;
 }
 
 .btn-primary {
-    @apply h-11 bg-[rgb(244_195_100)] text-zinc-950 hover:bg-orange-300 active:bg-orange-400
+    @apply bg-gradient-to-r from-amber-400 to-amber-500 text-zinc-950 font-semibold shadow-lg shadow-amber-500/20 hover:from-amber-300 hover:to-amber-400 hover:shadow-amber-500/30 active:scale-[0.98];
 }
 
 .btn-outline {
-    @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800
+    @apply bg-zinc-900/80 hover:bg-zinc-800 active:bg-zinc-900 border border-zinc-700/60 text-zinc-200 hover:text-zinc-50;
 }
 
 /* Text field */
-
 .label {
-    @apply block text-zinc-200 text-sm font-normal mb-2
+    @apply block text-zinc-300 text-sm font-medium mb-2;
 }
 
 .text-field {
-    @apply block outline-none w-full px-3 py-3 text-sm 
-    bg-zinc-800 rounded-xl ring-1 ring-inset ring-transparent
-    transition-shadow hover:ring-zinc-50/5 focus:ring-sky-400
-    focus:ring-2
-}
-
-.text-field::placeholder {
-    @apply text-zinc-400
+    @apply block outline-none w-full px-4 py-3 text-sm 
+    bg-zinc-900/90 rounded-xl border border-zinc-800
+    transition-all placeholder:text-zinc-500 hover:border-zinc-700
+    focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 text-zinc-100;
 }
