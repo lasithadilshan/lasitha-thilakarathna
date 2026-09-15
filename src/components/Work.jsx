@@ -7,41 +7,53 @@ import ProjectCard from './ProjectCard';
 
 const works = [
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-1.webp`,
-    title: 'Machine Learning App',
-    tags: ['ML', 'MVC', 'Python', 'Streamlit'],
-    projectLink: 'https://ld-machinelearning.streamlit.app/'
+    imgSrc: `${import.meta.env.BASE_URL}images/project-5.webp`,
+    title: 'DevFixHub',
+    desc: 'Open-source developer error solutions, programming tutorials, and free client-side dev tools built for modern engineers.',
+    tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Vercel'],
+    projectLink: 'https://devfixhub.vercel.app/',
+    repoLink: 'https://github.com/lasithadilshan/DevFixHub'
   },
   {
     imgSrc: `${import.meta.env.BASE_URL}images/project-2.webp`,
-    title: 'Gen AI App',
-    tags: ['Generative AI', 'OpenAI', 'GPT-4', 'FastAPI'],
-    projectLink: 'https://github.com/lasithadilshan/MscResearchProject'
+    title: 'CareerOps AI Agent',
+    desc: 'Local open-source AI job search agent: scans portals, evaluates matches into structured reports, and tailors CVs.',
+    tags: ['Python', 'AI Agents', 'CLI', 'Structured LLMs'],
+    projectLink: 'https://career-ops.org',
+    repoLink: 'https://github.com/lasithadilshan/career-ops'
   },
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-3.webp`,
-    title: 'Enterprise CRUD App',
-    tags: ['Angular 11', 'TypeScript', 'CRUD', 'REST API'],
-    projectLink: 'https://github.com/lasithadilshan/Angular11CRUD'
+    imgSrc: `${import.meta.env.BASE_URL}images/project-1.webp`,
+    title: 'LLM Hallucination Detector',
+    desc: 'UQML-powered platform using uncertainty quantification to determine whether Large Language Model outputs are factually grounded.',
+    tags: ['Python', 'UQML', 'Streamlit', 'LangChain', 'Gemini'],
+    projectLink: 'https://hallucination-detector-app.streamlit.app/',
+    repoLink: 'https://github.com/lasithadilshan/Hallucination-Detector-App'
   },
   {
     imgSrc: `${import.meta.env.BASE_URL}images/project-4.webp`,
-    title: 'DMusic Android Player',
-    tags: ['Android', 'Java', 'Audio', 'Mobile UX'],
-    projectLink: 'https://github.com/lasithadilshan/DMusic'
+    title: 'AI Parking Monitor & OCR',
+    desc: 'Computer vision pipeline combining YOLOv8 tracking, EasyOCR license plate extraction, virtual zones, and SQLite telemetry.',
+    tags: ['YOLOv8', 'Computer Vision', 'EasyOCR', 'Streamlit'],
+    projectLink: 'https://github.com/lasithadilshan/Streamlit-AI-Parking-Monitor-and-License-Plate-Locator-App',
+    repoLink: 'https://github.com/lasithadilshan/Streamlit-AI-Parking-Monitor-and-License-Plate-Locator-App'
   },
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-5.webp`,
-    title: 'FoodGarage eCommerce',
-    tags: ['eCommerce', 'Full Stack', 'Payment', 'Web App'],
-    projectLink: 'https://github.com/lasithadilshan/foodgarage'
+    imgSrc: `${import.meta.env.BASE_URL}images/project-3.webp`,
+    title: 'Policy Document Intelligence',
+    desc: 'Conversational RAG document intelligence system enabling contextual Q&A with precise source citations across multi-page PDFs.',
+    tags: ['LangChain', 'Gemini', 'FAISS', 'RAG', 'FastAPI'],
+    projectLink: 'https://document-chatbot-app.streamlit.app/',
+    repoLink: 'https://github.com/lasithadilshan/document-chatbot'
   },
   {
     imgSrc: `${import.meta.env.BASE_URL}images/project-6.webp`,
-    title: 'Modern Portfolio',
-    tags: ['React', 'TailwindCSS', 'GSAP', 'Vite'],
-    projectLink: 'https://github.com/lasithadilshan/lasitha-thilakarathna'
-  },
+    title: 'LinkNote Studio',
+    desc: 'Client-side React markdown notepad with local browser storage, AES note encryption, import/export, and shareable snapshot links.',
+    tags: ['React', 'TypeScript', 'Crypto', 'Markdown', 'PWA'],
+    projectLink: 'https://lasithadilshan.github.io/linknote-studio/',
+    repoLink: 'https://github.com/lasithadilshan/linknote-studio'
+  }
 ];
 
 const Work = () => {
@@ -53,19 +65,21 @@ const Work = () => {
       <div className="ambient-glow-amber top-1/2 -right-24" aria-hidden="true" />
       <div className="container relative z-10">
         <h2 className="headline-2 mb-3 reveal-up">
-          My portfolio highlights
+          Featured Projects & Open Source
         </h2>
-        <p className="text-zinc-400 mb-8 max-w-[50ch] reveal-up">
-          Explore a selection of recent featured projects spanning full-stack development, AI applications, and mobile engineering.
+        <p className="text-zinc-400 mb-8 max-w-[55ch] reveal-up">
+          A showcase of production-ready AI applications, autonomous agents, developer tools, and full-stack systems from my GitHub portfolio.
         </p>
-        <div className="grid gap-x-4 gap-y-6 grid-cols-[repeat(auto-fill,minmax(300px,_1fr))]">
-          {works.map(({ imgSrc, title, tags, projectLink }, key) => (
+        <div className="grid gap-x-5 gap-y-6 grid-cols-[repeat(auto-fill,minmax(320px,_1fr))]">
+          {works.map(({ imgSrc, title, desc, tags, projectLink, repoLink }, key) => (
             <ProjectCard 
               key={key}
               imgSrc={imgSrc}
               title={title}
+              desc={desc}
               tags={tags}
               projectLink={projectLink}
+              repoLink={repoLink}
               classes="reveal-up"
             />
           ))}
