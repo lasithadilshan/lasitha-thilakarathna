@@ -7,7 +7,7 @@ import ProjectCard from './ProjectCard';
 
 const works = [
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-5.webp`,
+    imgSrc: `${import.meta.env.BASE_URL}images/project-devfixhub.webp`,
     title: 'DevFixHub',
     desc: 'Open-source developer error solutions, programming tutorials, and free client-side dev tools built for modern engineers.',
     tags: ['Next.js', 'TypeScript', 'TailwindCSS', 'Vercel'],
@@ -15,15 +15,7 @@ const works = [
     repoLink: 'https://github.com/lasithadilshan/DevFixHub'
   },
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-2.webp`,
-    title: 'CareerOps AI Agent',
-    desc: 'Local open-source AI job search agent: scans portals, evaluates matches into structured reports, and tailors CVs.',
-    tags: ['Python', 'AI Agents', 'CLI', 'Structured LLMs'],
-    projectLink: 'https://career-ops.org',
-    repoLink: 'https://github.com/lasithadilshan/career-ops'
-  },
-  {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-1.webp`,
+    imgSrc: `${import.meta.env.BASE_URL}images/project-hallucination-detector.webp`,
     title: 'LLM Hallucination Detector',
     desc: 'UQML-powered platform using uncertainty quantification to determine whether Large Language Model outputs are factually grounded.',
     tags: ['Python', 'UQML', 'Streamlit', 'LangChain', 'Gemini'],
@@ -31,7 +23,15 @@ const works = [
     repoLink: 'https://github.com/lasithadilshan/Hallucination-Detector-App'
   },
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-4.webp`,
+    imgSrc: `${import.meta.env.BASE_URL}images/project-meetingmind-ai.webp`,
+    title: 'MeetingMind AI',
+    desc: 'Automated video transcription and executive meeting minutes generator powered by Google Gemini multimodal models.',
+    tags: ['Python', 'Gemini AI', 'Streamlit', 'Audio Analysis'],
+    projectLink: 'https://video-transcription-app.streamlit.app/',
+    repoLink: 'https://github.com/lasithadilshan/streamlit-gemini-ai-video-transcription-app'
+  },
+  {
+    imgSrc: `${import.meta.env.BASE_URL}images/project-parking-monitor.webp`,
     title: 'AI Parking Monitor & OCR',
     desc: 'Computer vision pipeline combining YOLOv8 tracking, EasyOCR license plate extraction, virtual zones, and SQLite telemetry.',
     tags: ['YOLOv8', 'Computer Vision', 'EasyOCR', 'Streamlit'],
@@ -39,7 +39,7 @@ const works = [
     repoLink: 'https://github.com/lasithadilshan/Streamlit-AI-Parking-Monitor-and-License-Plate-Locator-App'
   },
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-3.webp`,
+    imgSrc: `${import.meta.env.BASE_URL}images/project-doc-chatbot.webp`,
     title: 'Policy Document Intelligence',
     desc: 'Conversational RAG document intelligence system enabling contextual Q&A with precise source citations across multi-page PDFs.',
     tags: ['LangChain', 'Gemini', 'FAISS', 'RAG', 'FastAPI'],
@@ -47,7 +47,7 @@ const works = [
     repoLink: 'https://github.com/lasithadilshan/document-chatbot'
   },
   {
-    imgSrc: `${import.meta.env.BASE_URL}images/project-6.webp`,
+    imgSrc: `${import.meta.env.BASE_URL}images/project-linknote-studio.webp`,
     title: 'LinkNote Studio',
     desc: 'Client-side React markdown notepad with local browser storage, AES note encryption, import/export, and shareable snapshot links.',
     tags: ['React', 'TypeScript', 'Crypto', 'Markdown', 'PWA'],
